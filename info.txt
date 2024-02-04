@@ -1,0 +1,4 @@
+kubectl create namespace devops-tools
+
+$ eval $(minikube docker-env)
+minikube start --nodes 2 --cpus=2 --memory=4096 --base-image "gcr.io/k8s-minikube/kicbase:v0.0.42"
