@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-worker
+  labels:
+    app: jenkins-worker
+spec:
+  containers:
+    - name: jenkins-builder
+      image: jenkins/inbound-agent:latest
+      command:
+        - "/usr/local/bin/jenkins-agent"
+      args:
+        - "-url"
+        - "http://jenkins-url"
+        - "your-secret"
+        - "agent-name"
+      tty: true
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 200m
+          memory: 512Mi
